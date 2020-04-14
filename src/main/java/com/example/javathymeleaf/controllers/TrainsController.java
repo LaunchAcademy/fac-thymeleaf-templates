@@ -10,10 +10,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@RequestMapping("/trains")
 public class TrainsController {
-  @GetMapping("/trains/{id}")
+  @GetMapping("/{id}")
   public String getTrain(@PathVariable Integer id, Model model) {
     Train train;
     try {
@@ -29,7 +31,7 @@ public class TrainsController {
     return "trains/show";
   }
 
-  @GetMapping("/trains")
+  @GetMapping
   public String getTrains(Model model) {
     model.addAttribute("station", getStation());
     model.addAttribute("trains", getTrains());
